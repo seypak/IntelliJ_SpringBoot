@@ -12,7 +12,7 @@
   </parent>
 
   <groupId>studio.thinkground</groupId>
-  <artifactId>AroundHub_SpringBoot</artifactId>
+  <artifactId>IntelliJ_SpringBoot</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
