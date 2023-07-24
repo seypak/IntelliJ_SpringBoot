@@ -9,6 +9,11 @@ import java.util.Map;
 @RequestMapping("api/v1/get-api")
 public class HelloController {
 
+    /**
+     * GetMapping 테스트 코드 예제
+     * @return String
+     */
+
     //http://localhost:8080/api/v1/get-api/hello
     //@RequestMapping(value = "/hello", method = RequestMethod.GET)
     @GetMapping(value = "/hello")
@@ -23,19 +28,19 @@ public class HelloController {
     }
 
     //@pathVariable 변수값과 url 형식의 {변수값} 이 동일해야함.
-    //http://localhost:8080/api/v1/get-api/variable1/variable1test
+    //http://localhost:8080/api/v1/get-api/variable1/IntelliJ-SpringBoot
     @GetMapping(value = "/variable1/{variable}")
     public String getVariable1(@PathVariable String variable) {
         return variable;
     }
 
-    //http://localhost:8080/api/v1/get-api/variable2/variable2test
+    //http://localhost:8080/api/v1/get-api/variable2/IntelliJ-SpringBoot2
     @GetMapping(value = "/variable2/{variable}")
     public String getVariable2(@PathVariable("variable") String var) {
         return var;
     }
 
-    //http://localhost:8080/api/v1/get-api/request1?name=flature&email=seypak77@gmail.com&organization=seypark
+    //http://localhost:8080/api/v1/get-api/request1?name=seyoungPark&email=seypak77@gmail.com&organization=seypark
     @GetMapping(value = "/request1")
     public String getRequestParam1(
             @RequestParam String name,
@@ -44,14 +49,19 @@ public class HelloController {
         return name + " " + email + " " + organization;
     }
 
+    //http://localhost:8080/api/v1/get-api/request2?name=seyoungPark&email=seypak77@gmail.com&organization=seypark
     @GetMapping(value = "/request2")
     public String getRequestParam2(@RequestParam Map<String, Object> param) {
         StringBuilder sb = new StringBuilder();
-        return null;
+        param.entrySet().forEach(map -> {
+            sb.append(map.getKey() + " : " + map.getValue() + "\n");
+        });
+        return sb.toString();
     }
 
+    //http://localhost:8080/api/v1/get-api/request3?name=seyoungPark&email=seypak77@gmail.com&organization=seypark
     @GetMapping(value = "/request3")
-    public String getRequestParam3(@RequestParam MemberDTO memberDTO) {
-        return null;
+    public String getRequestParam3(@ModelAttribute MemberDTO memberDTO) {
+        return memberDTO.toString();
     }
 }
