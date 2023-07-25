@@ -1,0 +1,1 @@
+package com.seypak.study.intellij.controller;

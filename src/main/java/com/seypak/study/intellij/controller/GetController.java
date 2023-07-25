@@ -1,7 +1,7 @@
-package studio.thinkground.aroundhub.controller;
+package com.seypak.study.intellij.controller;
 
+import com.seypak.study.intellij.dto.MemberDTO;
 import org.springframework.web.bind.annotation.*;
-import studio.thinkground.aroundhub.dto.MemberDTO;
 
 import java.util.Map;
 

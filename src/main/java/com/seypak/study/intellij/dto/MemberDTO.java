@@ -1,4 +1,4 @@
-package studio.thinkground.aroundhub.dto;
+package com.seypak.study.intellij.dto;
 
 public class MemberDTO {
 
