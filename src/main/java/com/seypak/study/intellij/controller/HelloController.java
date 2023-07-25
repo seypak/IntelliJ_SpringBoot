@@ -1,7 +1,13 @@
 package com.seypak.study.intellij.controller;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class HelloController {
-    public static void main(String[] args) {
-        //System.out.println("Hello World");
+
+    @RequestMapping("/hello")
+    public String hello() {
+        return "Hello World";
     }
 }

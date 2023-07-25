@@ -1,4 +1,4 @@
-package studio.thinkground.aroundhub.config;
+package com.seypak.study.intellij.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("studio.thinkground.aroundhub"))
+                .apis(RequestHandlerSelectors.basePackage("com.seypak.study.intellij"))
                 .paths(PathSelectors.any())
                 .build();
     }
