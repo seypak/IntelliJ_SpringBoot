@@ -30,7 +30,6 @@ public class MemberDTO {
         this.organization = organization;
     }
 
-    @Override
     public String toString() {
         return "MemberDTO{" +
                 "name='" + name + '\'' +
