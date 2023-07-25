@@ -24,25 +24,25 @@ public class PostController {
      * }
      */
     @PostMapping(value = "/member")
-    public String postMember(@RequestBody Map<String, Object> param) {
+    public String postMember(@RequestBody Map<String, Object> postData) {
         StringBuilder sb = new StringBuilder();
-        param.entrySet().forEach(map -> {
-            sb.append(map.getKey() + " : " + map.getValue() + "\n");
-        });
+
+        postData.forEach((key, value) -> sb.append(key).append(" : ").append(value).append("\n"));
+
         return sb.toString();
     }
 
     //http://localhost:8080/api/v1/post-api/member2
 
     /**
-     * {
-     *   "name" : "seyoungPark"
-     *   ,"email" : "seypak77@gmail.com"
-     *   ,"organization" : "seypark"
-     * }
+      {
+        "name" : "seyoungPark"
+        ,"email" : "seypak77@gmail.com"
+        ,"organization" : "seypark"
+      }
      */
     @PostMapping(value = "/member2")
-    public String postMember2(MemberDTO memberDTO) {
+    public String postMember2(@RequestBody MemberDTO memberDTO) {
         return memberDTO.toString();
     }
 }
