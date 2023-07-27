@@ -4,12 +4,13 @@ import com.seypak.study.intellij.data.dto.ProductDto;
 import com.seypak.study.intellij.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/product-api")
@@ -37,5 +38,27 @@ public class ProductController {
                 , (System.currentTimeMillis()- startTime));
 
         return productDto;
+    }
+
+    // http://localhost:8080/api/v1/product-api/product
+    @PostMapping(value = "/product")
+    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto productDto) {
+
+        // Validation Code Example
+        // 아래와 같은 코드를 줄이기위한 @Valid annotation 사용
+        if(!StringUtils.hasText(productDto.getProductId())) {
+            LOGGER.error("[createProduct] failed Response :: productId is Empty");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(productDto);
+        }
+
+        String productId = productDto.getProductId();
+        String productName = productDto.getProductId();
+        int productPrice = productDto.getProductPrice();
+        int productStock = productDto.getProductStock();
+
+        ProductDto response = productService.saveProduct(productId, productName, productPrice, productStock);
+        LOGGER.info("[createProduct] Response >> productId ='{}', productName ='{}', productPrice ='{}', productStock ='{}'"
+        , response.getProductId(), response.getProductName(), response.getProductPrice(), response.getProductStock());
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
 }

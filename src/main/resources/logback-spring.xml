@@ -11,7 +11,7 @@
             <level>DEBUG</level>
         </filter>
         <encoder>
-            <pattern>%yellow([%d{yyyy-MM-dd HH:mm:ss.SSS}]) %highlight([%-5level]) [%thread] %cyan(%logger-{30}) %msg%n</pattern>
+            <pattern>%yellow([%d{yyyy-MM-dd HH:mm:ss.SSS}]) %highlight([%-5level]) [%thread] %cyan(%logger{30}) %msg%n</pattern>
         </encoder>
     </appender>
 
