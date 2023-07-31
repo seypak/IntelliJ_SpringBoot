@@ -52,7 +52,7 @@ public class ProductController {
         }
 
         String productId = productDto.getProductId();
-        String productName = productDto.getProductId();
+        String productName = productDto.getProductName();
         int productPrice = productDto.getProductPrice();
         int productStock = productDto.getProductStock();
 
